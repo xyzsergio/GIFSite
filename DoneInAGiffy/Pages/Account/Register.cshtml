@@ -1,0 +1,41 @@
+﻿@page
+@model DoneInAGiffy.Pages.Account.RegisterModel
+@{
+}
+<form method="post">
+    <div class="row m-2">
+        <div class="col-2">
+            <label asp-for = "newUser.Username" class="form-label">Username</label>
+        </div>
+        <div class ="col-10">
+            <input asp-for = "newUser.Username" type= "text" class = "form-control"/>
+            <span asp-validation-for="newUser.Username" class="text-danger"></span>
+        </div>     
+    </div>
+
+    <div class="row m-2">
+        <div class="col-2">
+            <label asp-for="newUser.Email" class="form-label">Email</label>
+        </div>
+        <div class="col-10">
+            <input asp-for="newUser.Email" type="email" class="form-control" />
+            <span asp-validation-for="newUser.Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row m-2">
+        <div class="col-2">
+            <label asp-for="newUser.Password" class="form-label">Password</label>
+        </div>
+        <div class="col-10">
+            <input asp-for="newUser.Password" type="password" class="form-control" />
+            <span asp-validation-for="newUser.Password" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row m-2">
+        <div class="col-2">
+            <button id = "btnRegister" class ="btn btn-primary">Sign Up</button>
+        </div>
+    </div>
+</form>
