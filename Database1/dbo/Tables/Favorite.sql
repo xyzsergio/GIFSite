@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Favorite] (
-    [FavoriteID]    INT      NOT NULL,
+    [FavoriteID]    INT      IDENTITY (1, 1) NOT NULL,
     [UserID]        INT      NOT NULL,
     [GIFID]         INT      NOT NULL,
     [FavoritedDate] DATETIME NOT NULL,
@@ -7,4 +7,6 @@
     CONSTRAINT [FK_Favorite_GIF] FOREIGN KEY ([GIFID]) REFERENCES [dbo].[GIF] ([GIFID]),
     CONSTRAINT [FK_Favorite_User] FOREIGN KEY ([UserID]) REFERENCES [dbo].[User] ([UserID])
 );
+
+
 

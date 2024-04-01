@@ -71,4 +71,7 @@
     <Build Include="dbo\Tables\Favorite.sql" />
     <Build Include="dbo\Tables\Playlist.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="PopulateDB.sql" />
+  </ItemGroup>
 </Project>

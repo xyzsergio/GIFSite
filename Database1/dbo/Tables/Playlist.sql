@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Playlist] (
-    [PlaylistID]   INT          NOT NULL,
+    [PlaylistID]   INT          IDENTITY (1, 1) NOT NULL,
     [UserID]       INT          NOT NULL,
     [PlaylistName] VARCHAR (50) NOT NULL,
     [GIFID]        INT          NOT NULL,
@@ -8,4 +8,6 @@
     CONSTRAINT [FK_Playlist_GIF] FOREIGN KEY ([GIFID]) REFERENCES [dbo].[GIF] ([GIFID]),
     CONSTRAINT [FK_Playlist_User] FOREIGN KEY ([UserID]) REFERENCES [dbo].[User] ([UserID])
 );
+
+
 

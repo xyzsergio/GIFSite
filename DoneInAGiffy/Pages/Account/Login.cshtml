@@ -3,23 +3,23 @@
 @{
 }
 <form method="post">
-<div class="row m-2">
-    <div class="col-2">
-        <label class="form-label" asp-for="loginUser.Email">Email</label>
+    <div class="row m-2">
+        <div class="col-2">
+            <label class="form-label" asp-for="loginUser.Email">Email</label>
+        </div>
+        <div class="col-10">
+            <input type="email" class="form-control" asp-for="loginUser.Email"/>
+                <span asp-validation-for="loginUser.Email" class="text-danger"></span>
+        </div>
+            <div class="col-2">
+            <label class="form-label" asp-for="loginUser.Password">Password</label>
+        </div>
+        <div class="col-10">
+            <input type="password" class="form-control" asp-for="loginUser.Password"/>
+                <span asp-validation-for="loginUser.Password" class="text-danger"></span>
+        </div>
+        <div class="col-2">
+            <button id="btnLogin" class="btn btn-primary"> Sign In</button>
+        </div>
     </div>
-    <div class="col-10">
-        <input type="email" class="form-control" asp-for="loginUser.Email"/>
-            <span asp-validation-for="loginUser.Email" class="text-danger"></span>
-    </div>
-    <div class="col-2">
-        <label class="form-label" asp-for="loginUser.Password">Password</label>
-    </div>
-    <div class="col-10">
-        <input type="password" class="form-control" asp-for="loginUser.Password"/>
-            <span asp-validation-for="loginUser.Password" class="text-danger"></span>
-    </div>
-    <div class="col-2">
-        <button id="btnLogin" class="btn btn-primary"> Sign In</button>
-    </div>
-</div>
 </form>

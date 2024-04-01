@@ -23,7 +23,7 @@ namespace DoneInAGiffy.Pages.Account
                 //string connString = "Server = (localdb)\\MSSQLocalDB; Database = DoneInAGiffy; Trusted_Connection = true;";
                 SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
                 // 2) Create a insert command
-                string cmdText = "INSERT INTO User(Username, Email, Password)" + "VALUES(@username, @email, @password)";
+                string cmdText = "INSERT INTO [User](Username, Email, Password) " + "VALUES(@username, @email, @password)";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
                 cmd.Parameters.AddWithValue("@username", newUser.Username);      //Order doesn't matter
                 cmd.Parameters.AddWithValue("@email", newUser.Email);
