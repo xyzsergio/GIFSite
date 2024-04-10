@@ -27,11 +27,30 @@ html {
 body {
   margin-bottom: 60px;
 }
-
-label, input {
-    margin-top: 1vw;
+input {
+    box-shadow: 0.25vw 0.25vw #dddddd;
 }
 form {
     margin-left: 20%;
     margin-right: 20%;
+}
+.col-2, .col-10 {
+    margin-top: 1vw;
+}
+.username {
+    width: 50%;
+    margin: 0 auto;
+    font-size: 40px;
+}
+.biography {
+    width: 50%;
+    margin: 0 auto;
+    font-size: 20px;
+}
+header {
+    background-color: #000000;
+}
+form {
+    border: 2px solid black;
+    padding: 1vw;
 }

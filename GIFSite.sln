@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoneInAGiffy", "DoneInAGiff
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database1", "Database1\Database1.sqlproj", "{78CA1F8B-85AE-484A-ABFB-79590490DBCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIFLibrary", "GIFLibrary\GIFLibrary.csproj", "{39D8C790-5647-4A84-939E-7C16FF28C0DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GIFLibrary", "GIFLibrary\GIFLibrary.csproj", "{39D8C790-5647-4A84-939E-7C16FF28C0DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
