@@ -16,7 +16,7 @@ namespace GIFLibrary
 
         public static string GetDBConnectionString()
         {
-            string connString = "Server = (localdb)\\MSSQLLocalDB; Database = DoneInAGiffy; Trusted_Connection = true;";
+            string connString = "Server = (localdb)\\MSSQLLocalDB; Database = Database1; Trusted_Connection = true;";
             return connString;
         }
     }

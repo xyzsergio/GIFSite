@@ -1,9 +1,11 @@
 ﻿@page
 @model DoneInAGiffy.Pages.Account.ProfileModel
 @{
+    Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
 }
 <div class="username">
-    <label asp-for="profile.Username"></label>
+    <!-- label asp-for="profile.Username"></!-->
+
 </div>
 <div>
     <button>Edit playlist</button>

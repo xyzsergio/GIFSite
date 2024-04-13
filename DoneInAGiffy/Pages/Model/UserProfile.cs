@@ -13,5 +13,8 @@ namespace DoneInAGiffy.Pages.Model
         public string Email { get; set; }
         [Display(Name = "Password: ")]
         public string Password { get; set; }
+
+        public DateTime LastLoginTime { get; set; }
+        
     }
 }

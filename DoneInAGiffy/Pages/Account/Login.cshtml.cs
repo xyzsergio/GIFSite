@@ -1,8 +1,11 @@
 using DoneInAGiffy.Pages.Model;
 using GIFLibrary;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
+using System.Security.Claims;
 
 namespace DoneInAGiffy.Pages.Account
 {
@@ -39,7 +42,8 @@ namespace DoneInAGiffy.Pages.Account
             bool returnThis = false;
 
             SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
-            string cmdText = "SELECT Password, UserID FROM [User] WHERE Email=@email";
+            // Fix this line later - we don't have RoleId in user table
+            string cmdText = "SELECT Password, UserID, Username, Email FROM [User] Inner Join Administrator on [User].AdminId = [Administrator].AdminId WHERE Email=@email";
             SqlCommand cmd = new SqlCommand(cmdText, conn);
             cmd.Parameters.AddWithValue("@Email", loginUser.Email);
             conn.Open();
@@ -55,6 +59,21 @@ namespace DoneInAGiffy.Pages.Account
                         // get the userID and use it to update the user record
                         int userID = reader.GetInt32(1);
                         UpdateUserLoginTime(userID);
+                        // create a principal
+                        string username = reader.GetString(2);
+                        string roleName = reader.GetString(4);
+                        // 1. create a lsit of claims
+                        Claim emailClaim = new Claim(ClaimTypes.Email, loginUser.Email);
+                        Claim nameClaim = new Claim(ClaimTypes.Name, username);
+                        Claim roleClaim = new Claim(ClaimTypes.Role, roleName);
+
+                        List<Claim> claims = new List<Claim> { emailClaim, nameClaim, roleClaim };
+                        // 2. add the list of claims to a ClaimsIdentity
+                        ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                        // 3. add the identity to a ClaimsPrincipal
+                        ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+                        // 4. call HttpContext.SignInAsync() method to encrypt the principal
+                        HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
                         returnThis = true;
                     }
