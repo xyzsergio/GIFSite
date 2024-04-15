@@ -13,7 +13,7 @@ namespace DoneInAGiffy.Pages.Account
     public class ProfileModel : PageModel
     {
         [BindProperty]
-        public UserProfile profile {  get; set; }
+        public UserProfile profile { get; set; } = new UserProfile();
         public void OnGet()
         {
             PopulateProfile();

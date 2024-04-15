@@ -43,7 +43,7 @@ namespace DoneInAGiffy.Pages.Account
 
             SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
             // Fix this line later - we don't have RoleId in user table
-            string cmdText = "SELECT Password, UserID, Username, Email FROM [User] Inner Join Administrator on [User].AdminId = [Administrator].AdminId WHERE Email=@email";
+            string cmdText = "SELECT Password, [User].UserID, Username, Email, [User].AdminID FROM [User] Inner Join Administrator on [User].AdminId = [Administrator].AdminId WHERE Email=@email";
             SqlCommand cmd = new SqlCommand(cmdText, conn);
             cmd.Parameters.AddWithValue("@Email", loginUser.Email);
             conn.Open();
@@ -61,8 +61,8 @@ namespace DoneInAGiffy.Pages.Account
                         UpdateUserLoginTime(userID);
                         // create a principal
                         string username = reader.GetString(2);
-                        string roleName = reader.GetString(4);
-                        // 1. create a lsit of claims
+                        string roleName = reader.GetInt32(4) + "";
+                        // 1. create a list of claims
                         Claim emailClaim = new Claim(ClaimTypes.Email, loginUser.Email);
                         Claim nameClaim = new Claim(ClaimTypes.Name, username);
                         Claim roleClaim = new Claim(ClaimTypes.Role, roleName);

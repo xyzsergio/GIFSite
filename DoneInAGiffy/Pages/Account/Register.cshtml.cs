@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using DoneInAGiffy.Pages.Account.Model;
 using Microsoft.Data.SqlClient;
 using GIFLibrary;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Data;
+using System.Xml;
 
 namespace DoneInAGiffy.Pages.Account
 {
@@ -35,19 +38,36 @@ namespace DoneInAGiffy.Pages.Account
         {
             using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
             {
-                // 2) Create a insert command
-                string cmdText = "INSERT INTO [User](Username, Email, Password) " + "VALUES(@username, @email, @password)";
+                // create new user
+                string cmdText = "INSERT INTO [User](Username, Email, Password, LastLoginTime, AdminID) " + 
+                    "VALUES(@username, @email, @password, @lastlogintime, @adminid)";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
-                cmd.Parameters.AddWithValue("@username", newUser.Username);      //Order doesn't matter
+                cmd.Parameters.AddWithValue("@username", newUser.Username);
                 cmd.Parameters.AddWithValue("@email", newUser.Email);
-                cmd.Parameters.AddWithValue("@password", SecurityHelper.GeneratePasswordHash(newUser.Password));   //Encrypts password
-                // 3) Open the database
+                cmd.Parameters.AddWithValue("@password", SecurityHelper.GeneratePasswordHash(newUser.Password));
+                cmd.Parameters.AddWithValue("@lastlogintime", DateTime.Now);
+                cmd.Parameters.AddWithValue("@adminid", 1);
+
                 conn.Open();
-                // 4) Execute the command
                 cmd.ExecuteNonQuery();
-                // 5) Close the database
-                // conn.Close();
+                conn.Close();
+                
             }
+            
+            using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
+            {
+                // put adminID into administrator table
+                string cmdText = "INSERT INTO [Administrator](UserID, PermissionID) " +
+                "VALUES(@userid, @permissionid)";
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+                cmd.Parameters.AddWithValue("@permissionid", 1);
+                cmd.Parameters.AddWithValue("@userid", getUserID(newUser.Email));
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            
         }
 
         private bool EmailDNE(string email)
@@ -67,6 +87,28 @@ namespace DoneInAGiffy.Pages.Account
                     return true;
                 }
             }
+        }
+        private int getUserID(string email)
+        {
+            int returnThis = -1;
+            using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
+            {
+                string cmdText = "Select [User].UserID From [User] where Email=@email";
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+                cmd.Parameters.AddWithValue("@email", email);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    if (!reader.IsDBNull(0))
+                    {
+                        returnThis = reader.GetInt32(0);
+                    }
+                        
+                }
+            }
+            return returnThis;
         }
     }
 }
