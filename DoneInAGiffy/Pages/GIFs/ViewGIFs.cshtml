@@ -2,6 +2,13 @@
 @model DoneInAGiffy.Pages.GIFs.ViewGIFsModel
 @{
 }
+<div class="row m-2 border">
+    <div class="row m-2">
+        <div class="col-2">
+            <a href="../GIFs/AddGIF class=" btn btn-primary">Add GIF</a>
+        </div>
+    </div>
+</div>
 @foreach (var GIF in Model.GIF) {
     <div class="row m-2 border">
         <div class="row m-2">
