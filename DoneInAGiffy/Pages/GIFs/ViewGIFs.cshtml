@@ -1,15 +1,16 @@
 ﻿@page
 @model DoneInAGiffy.Pages.GIFs.ViewGIFsModel
 @{
+    Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
 }
 <div class="row m-2 border">
     <div class="row m-2">
         <div class="col-2">
-            <a href="../GIFs/AddGIF class=" btn btn-primary">Add GIF</a>
+            <a href="../GIFs/AddGIF" class="btn btn-primary">Add GIF</a>
         </div>
     </div>
 </div>
-@foreach (var GIF in Model.GIF) {// Why is this text red?
+@foreach (var GIF in Model.GIFs) {
     <div class="row m-2 border">
         <div class="row m-2">
             <div class="col-2">
@@ -17,6 +18,36 @@
             </div>
             <div class="col-10">
                 <label class="form-label">@GIF.gifTitle</label>
+            </div>
+        </div>
+    </div>
+    <div class="row m-2 border">
+        <div class="row m-2">
+            <div class="col-2">
+                <label class="form-label" asp-for="@GIF.gifDescription"></label>
+            </div>
+            <div class="col-10">
+                <label class="form-label">@GIF.gifDescription</label>
+            </div>
+        </div>
+    </div>
+    <div class="row m-2 border">
+        <div class="row m-2">
+            <div class="col-2">
+                <label class="form-label" asp-for="@GIF.gifUploadDate"></label>
+            </div>
+            <div class="col-10">
+                <label class="form-label">@GIF.gifUploadDate</label>
+            </div>
+        </div>
+    </div>
+    <div class="row m-2 border">
+        <div class="row m-2">
+            <div class="col-2">
+                <label class="form-label" asp-for="@GIF.gifFilePath"></label>
+            </div>
+            <div class="col-10">
+                <label class="form-label">@GIF.gifFilePath</label>
             </div>
         </div>
     </div>

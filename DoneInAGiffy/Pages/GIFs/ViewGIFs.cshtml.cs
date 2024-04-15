@@ -1,6 +1,7 @@
 using DoneInAGiffy.Pages.Model;
 using GIFLibrary;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 
@@ -10,11 +11,9 @@ namespace DoneInAGiffy.Pages.GIFs
     // this page has a lot of stuff missing because our current mockup for the site doesn't have a dropdown to filter GIFs
     public class ViewGIFsModel : PageModel
     {
+        public List<GIF> GIFs { get; set; } = new List<GIF>();
+
         public void OnGet()
-        {
-        }
-        
-        public void OnPost()
         {
             using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
             {
@@ -32,9 +31,15 @@ namespace DoneInAGiffy.Pages.GIFs
                         gif.gifDescription = reader.GetString(2);
                         gif.gifUploadDate = reader.GetDateTime(3);
                         gif.gifFilePath = reader.GetString(4);
+                        GIFs.Add(gif);
                     }
                 }
             }
+        }
+        
+        public void OnPost()
+        {
+            
         }
     }
 }

@@ -54,3 +54,6 @@ form {
     border: 2px solid black;
     padding: 1vw;
 }
+nav {
+    background-color: rgb(170, 124, 230);
+}

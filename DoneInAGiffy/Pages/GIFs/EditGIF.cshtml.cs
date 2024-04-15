@@ -48,7 +48,7 @@ namespace DoneInAGiffy.Pages.GIFs
             {
                 string cmdText = "SELECT gifID, Title, Description, UploadDate, FilePath from GIF WHERE gifID=@gifid";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
-                cmd.Parameters.AddWithValue("@itemId", id);
+                cmd.Parameters.AddWithValue("@gifId", id);
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)

@@ -1,6 +1,7 @@
 ﻿@page
 @model DoneInAGiffy.Pages.GIFs.AddGIFModel
 @{
+    Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
 }
 <form method="post" class="form-group">
     <div class="row m-2">
