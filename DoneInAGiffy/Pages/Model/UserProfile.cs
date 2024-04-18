@@ -4,7 +4,7 @@ namespace DoneInAGiffy.Pages.Model
 {
     public class UserProfile
     {
-        //No
+        
         public int UserId { get; set; }
         [Display(Name = "Username : ")]
 
