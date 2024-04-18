@@ -73,5 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PopulateDB.sql" />
+    <None Include="Script.PostDeployment1.sql" />
   </ItemGroup>
 </Project>
