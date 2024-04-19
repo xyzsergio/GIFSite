@@ -72,7 +72,6 @@
     <Build Include="dbo\Tables\Playlist.sql" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="PopulateDB.sql" />
-    <None Include="Script.PostDeployment1.sql" />
+    <None Include="PopulateDB.sql" />
   </ItemGroup>
 </Project>
