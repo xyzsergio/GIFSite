@@ -48,7 +48,7 @@ form {
     font-size: 20px;
 }
 header {
-    background-color: #000000;
+    background-color: aliceblue;
 }
 form {
     border: 2px solid black;
@@ -56,4 +56,37 @@ form {
 }
 nav {
     background-color: rgb(170, 124, 230);
+}
+.gif-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    margin: auto;
+}
+.gif-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 180px;
+    height: auto;
+}
+.gif-item img{
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+}
+.gif-item p {
+    font-size: 0.9rem;
+    color: var(--blue);
+    text-align: center;
+    margin-top: 0.5rem;
 }
