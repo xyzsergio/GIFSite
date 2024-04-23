@@ -4,18 +4,13 @@
     ViewData["Title"] = "Home page";
     Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
 }
-
-<header text-align="center">
-    <img src="~/gifs/DoneInAGiffyLogo.png" alt="Done In A Giffy" class="header-logo" />
-    <!--<p>Explore the world of GIFs</p>-->
-    <!--<p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>-->
-</header>
+<link rel="stylesheet" href="~/css/site.css" />
 
 
 <div class="search-bar">
 
 </div>
-
+<div class="indexBackground"> 
 <div class="gif-grid">
     <div class="gif-item">
         <img src="~/gifs/Gif1.gif" alt="Gif1" />
@@ -64,5 +59,6 @@
     <div class="gif-item">
         <img src="~/gifs/Gif12.gif" alt="Gif12" />
         <p>airbender11</p>
+    </div>
     </div>
 </div>

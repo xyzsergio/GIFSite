@@ -90,3 +90,12 @@ nav {
     text-align: center;
     margin-top: 0.5rem;
 }
+
+.indexBackground {
+    background-image: url('../css/homepageImage.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    display: flex;
+}
