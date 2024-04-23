@@ -21,15 +21,23 @@ namespace DoneInAGiffy.Pages.Account
         {
             if (ModelState.IsValid)  // Checks if theres anything in the textbox
             {
-                // Ensure the email doesn't exist before registering the user
-                if (EmailDNE(newUser.Email))
+                // Check if the email already exists
+                if (EmailExists(newUser.Email))
                 {
-                    RegisterUser();
-                    return RedirectToPage("Login");
-                } else
-                {
-                    ModelState.AddModelError("RegisterError", "That email already exists. Try a different one.");// Bug: doesn't appear for some reason
+                    ModelState.AddModelError("newUser.Email", "An account with this email already exists.");
+                    return Page();
                 }
+
+                // Check if the username already exists
+                if (UsernameExists(newUser.Username))
+                {
+                    ModelState.AddModelError("newUser.Username", "This username is already taken.");
+                    return Page();
+                }
+
+                // If email and username are unique, proceed with account creation
+                RegisterUser();
+                return RedirectToPage("Login");
             }
             return Page();
         }
@@ -109,6 +117,32 @@ namespace DoneInAGiffy.Pages.Account
                 }
             }
             return returnThis;
+        }
+
+        private bool EmailExists(string email)
+        {
+            using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
+            {
+                string cmdText = "SELECT COUNT(*) FROM [User] WHERE Email = @Email";
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+                cmd.Parameters.AddWithValue("@Email", email);
+                conn.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        private bool UsernameExists(string username)
+        {
+            using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
+            {
+                string cmdText = "SELECT COUNT(*) FROM [User] WHERE Username = @Username";
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+                cmd.Parameters.AddWithValue("@Username", username);
+                conn.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
         }
     }
 }
