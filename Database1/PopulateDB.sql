@@ -1,4 +1,15 @@
-﻿SET IDENTITY_INSERT [dbo].[GIF] ON 
+﻿/*
+Post-Deployment Script Template							
+--------------------------------------------------------------------------------------
+ This file contains SQL statements that will be appended to the build script.		
+ Use SQLCMD syntax to include a file in the post-deployment script.			
+ Example:      :r .\myfile.sql								
+ Use SQLCMD syntax to reference a variable in the post-deployment script.		
+ Example:      :setvar TableName MyTable							
+               SELECT * FROM [$(TableName)]					
+--------------------------------------------------------------------------------------
+*/
+SET IDENTITY_INSERT [dbo].[GIF] ON 
 GO
 INSERT [dbo].[GIF] ([GIFID], [Title], [Description], [UploadDate], [FilePath]) VALUES (1, N'Gif1', N'Description for Gif1', CAST(N'2000-01-01T00:00:00.000' AS DateTime), N'Website link or file path from uploaded file will go here')
 GO
