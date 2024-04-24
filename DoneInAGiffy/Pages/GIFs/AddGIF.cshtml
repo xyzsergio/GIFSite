@@ -3,6 +3,11 @@
 @{
     Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
 }
+<div class="row m-2">
+    <div class="col-2">
+        <a asp-page="ViewGIFs" class="btn btn-primary">Back</a>
+    </div>
+</div>
 <form method="post" class="form-group">
     <div class="row m-2">
         <div class="col-2">
@@ -11,32 +16,24 @@
         <div class="col-10">
             <input type="text" class="form-control" asp-for="newGIF.gifID"/>
         </div>
-    </div>
-    <div class="row m-2">
         <div class="col-2">
             <label asp-for="newGIF.gifTitle"></label>
         </div>
         <div class="col-10">
             <input type="text" class="form-control" asp-for="newGIF.gifTitle" />
         </div>
-    </div>
-    <div class="row m-2">
         <div class="col-2">
             <label asp-for="newGIF.gifDescription"></label>
         </div>
         <div class="col-10">
             <input type="text" class="form-control" asp-for="newGIF.gifDescription" />
         </div>
-    </div>
-    <div class="row m-2">
         <div class="col-2">
             <label asp-for="newGIF.gifUploadDate"></label>
         </div>
         <div class="col-10">
             <input type="date" class="form-control" asp-for="newGIF.gifUploadDate" />
         </div>
-    </div>
-    <div class="row m-2">
         <div class="col-2">
             <label asp-for="newGIF.gifFilePath"></label>
         </div>
