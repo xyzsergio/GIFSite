@@ -43,7 +43,7 @@ namespace DoneInAGiffy.Pages.Account
 
             SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
             // Fix this line later - we don't have RoleId in user table
-            string cmdText = "SELECT Password, [User].UserID, Username, Email, [User].AdminID FROM [User] Inner Join Administrator on [User].AdminId = [Administrator].AdminId WHERE Email=@email";
+            string cmdText = "SELECT Password, [User].UserID, Username, Email, [User].PermissionID FROM [User] WHERE Email=@email";
             SqlCommand cmd = new SqlCommand(cmdText, conn);
             cmd.Parameters.AddWithValue("@Email", loginUser.Email);
             conn.Open();
