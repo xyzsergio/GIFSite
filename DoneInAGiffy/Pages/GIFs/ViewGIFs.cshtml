@@ -55,6 +55,7 @@
         <div class="row m-2">
             <div class="col-2">
                 <a asp-page="EditGIF" asp-route-id="@GIF.gifID" class="btn btn-primary">Edit</a>
+                <a asp-page="DeleteGIF" asp-route-id="@GIF.gifID" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this GIF?')">Delete</a>
             </div>
         </div>
     </div>
