@@ -65,13 +65,15 @@
     <Build Include="dbo\Tables\User.sql" />
     <Build Include="dbo\Tables\GIF.sql" />
     <Build Include="dbo\Tables\Category.sql" />
-    <Build Include="dbo\Tables\Administrator.sql" />
     <Build Include="dbo\Tables\Permissions.sql" />
     <Build Include="dbo\Tables\Like.sql" />
     <Build Include="dbo\Tables\Favorite.sql" />
     <Build Include="dbo\Tables\Playlist.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="PopulateDB.sql" />
+    <RefactorLog Include="Database1.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="PopulateDB.sql" />
   </ItemGroup>
 </Project>
