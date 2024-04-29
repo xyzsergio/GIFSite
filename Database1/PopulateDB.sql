@@ -22,11 +22,11 @@ INSERT INTO Category (CategoryName) VALUES
 
 -- Create users
 INSERT INTO [User] (Username, Email, Password, LastLoginTime, PermissionID)
-VALUES ('user1', 'user1@example.com', 'password1', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Owner')),
-       ('user2', 'user2@example.com', 'password2', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Owner')),
-       ('user3', 'user3@example.com', 'password3', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Viewer')),
-       ('user4', 'user4@example.com', 'password4', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Viewer')),
-       ('user5', 'user5@example.com', 'password5', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Viewer'));
+VALUES ('u1', 'u1@example.com', '$2a$13$qipoG7nz/WbxROHrf40ewOEH9vLQSY1snxWMNjpoHzoAuJ8GAxaMu', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Owner')),
+       ('u2', 'u2@example.com', '$2a$13$qipoG7nz/WbxROHrf40ewOEH9vLQSY1snxWMNjpoHzoAuJ8GAxaMu', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Owner')),
+       ('u3', 'u3@example.com', '$2a$13$qipoG7nz/WbxROHrf40ewOEH9vLQSY1snxWMNjpoHzoAuJ8GAxaMu', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Viewer')),
+       ('u4', 'u4@example.com', '$2a$13$qipoG7nz/WbxROHrf40ewOEH9vLQSY1snxWMNjpoHzoAuJ8GAxaMu', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Viewer')),
+       ('u5', 'u5@example.com', '$2a$13$qipoG7nz/WbxROHrf40ewOEH9vLQSY1snxWMNjpoHzoAuJ8GAxaMu', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Viewer'));
 
 -- Create GIFs
 DECLARE @CategoryId INT;

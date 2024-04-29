@@ -47,33 +47,19 @@ namespace DoneInAGiffy.Pages.Account
             using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
             {
                 // create new user
-                string cmdText = "INSERT INTO [User](Username, Email, Password, LastLoginTime, AdminID) " + 
-                    "VALUES(@username, @email, @password, @lastlogintime, @adminid)";
+                string cmdText = "INSERT INTO [User](Username, Email, Password, LastLoginTime, PermissionID) " + 
+                    "VALUES(@username, @email, @password, @lastlogintime, @permissionid)";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
                 cmd.Parameters.AddWithValue("@username", newUser.Username);
                 cmd.Parameters.AddWithValue("@email", newUser.Email);
                 cmd.Parameters.AddWithValue("@password", SecurityHelper.GeneratePasswordHash(newUser.Password));
                 cmd.Parameters.AddWithValue("@lastlogintime", DateTime.Now);
-                cmd.Parameters.AddWithValue("@adminid", 1);
+                cmd.Parameters.AddWithValue("@permissionid", 2);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 
-            }
-            
-            using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
-            {
-                // put adminID into administrator table
-                string cmdText = "INSERT INTO [Administrator](UserID, PermissionID) " +
-                "VALUES(@userid, @permissionid)";
-                SqlCommand cmd = new SqlCommand(cmdText, conn);
-                cmd.Parameters.AddWithValue("@permissionid", 1);
-                cmd.Parameters.AddWithValue("@userid", getUserID(newUser.Email));
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
             }
             
         }
