@@ -25,7 +25,7 @@ namespace DoneInAGiffy.Pages.GIFs
                     SqlCommand cmd = new SqlCommand(cmdText, conn);
                     cmd.Parameters.AddWithValue("@title", newGIF.gifTitle);
                     cmd.Parameters.AddWithValue("@description", newGIF.gifDescription);
-                    cmd.Parameters.AddWithValue("@uploaddate", newGIF.gifUploadDate);
+                    cmd.Parameters.AddWithValue("@uploaddate", DateTime.Now);
                     cmd.Parameters.AddWithValue("@filepath", newGIF.gifFilePath);
 
                     conn.Open();
