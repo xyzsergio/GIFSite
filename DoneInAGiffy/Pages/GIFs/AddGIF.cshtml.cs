@@ -4,10 +4,12 @@ using DoneInAGiffy.Pages.Model;
 using DoneInAGiffy.Pages.Account.Model;
 using GIFLibrary;
 using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DoneInAGiffy.Pages.GIFs
 {
     [BindProperties]
+    [Authorize(Roles = "Owner, Viewer")]
     public class AddGIFModel : PageModel
     {
         public GIF newGIF { get; set; } = new GIF();
