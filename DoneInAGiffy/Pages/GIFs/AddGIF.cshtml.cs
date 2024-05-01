@@ -14,7 +14,6 @@ namespace DoneInAGiffy.Pages.GIFs
     // Use to connect to claim
     [Authorize]
     [BindProperties]
-    [Authorize(Roles = "1,2")]
     public class AddGIFModel : PageModel
     {
         public List<SelectListItem> Categories { get; set; } = new List<SelectListItem>();
