@@ -17,7 +17,7 @@ namespace DoneInAGiffy.Pages.GIFs
         {
             using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
             {
-                string cmdText = "Select gifID, Title, Description, UploadDate, FilePath from GIF";
+                string cmdText = "Select gifID, Title, Description, UploadDate, Link from GIF";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -30,7 +30,7 @@ namespace DoneInAGiffy.Pages.GIFs
                         gif.gifTitle = reader.GetString(1);
                         gif.gifDescription = reader.GetString(2);
                         gif.gifUploadDate = reader.GetDateTime(3);
-                        gif.gifFilePath = reader.GetString(4);
+                        gif.gifLink = reader.GetString(4);
                         GIFs.Add(gif);
                     }
                 }

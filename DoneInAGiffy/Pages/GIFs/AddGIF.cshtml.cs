@@ -24,7 +24,7 @@ namespace DoneInAGiffy.Pages.GIFs
                     cmd.Parameters.AddWithValue("@title", newGIF.gifTitle);
                     cmd.Parameters.AddWithValue("@description", newGIF.gifDescription);
                     cmd.Parameters.AddWithValue("@uploaddate", newGIF.gifUploadDate);
-                    cmd.Parameters.AddWithValue("@filepath", newGIF.gifFilePath);
+                    cmd.Parameters.AddWithValue("@filepath", newGIF.gifLink);
 
                     conn.Open();
                     cmd.ExecuteNonQuery();

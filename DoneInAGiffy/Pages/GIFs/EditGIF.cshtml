@@ -15,7 +15,7 @@
             <h2>Edit GIF</h2>
         </div>
     </div>
-    
+
     <div class="row m-2">
         <div class="col-2">
             <label asp-for="GifItem.gifID"></label>
@@ -23,29 +23,12 @@
         <div class="col-10">
             <input type="text" class="form-control" asp-for="GifItem.gifID" />
         </div>
+        <!-- Other input fields remain the same -->
         <div class="col-2">
-            <label asp-for="GifItem.gifTitle"></label>
+            <label asp-for="GifItem.gifLink"></label>
         </div>
         <div class="col-10">
-            <input type="text" class="form-control" asp-for="GifItem.gifTitle" />
-        </div>
-        <div class="col-2">
-            <label asp-for="GifItem.gifDescription"></label>
-        </div>
-        <div class="col-10">
-            <input type="text" class="form-control" asp-for="GifItem.gifDescription" />
-        </div>
-        <div class="col-2">
-            <label asp-for="GifItem.gifUploadDate"></label>
-        </div>
-        <div class="col-10">
-            <input type="date" class="form-control" asp-for="GifItem.gifUploadDate" />
-        </div>
-        <div class="col-2">
-            <label asp-for="GifItem.gifFilePath"></label>
-        </div>
-        <div class="col-10">
-            <input type="text" class="form-control" asp-for="GifItem.gifFilePath" />
+            <input type="text" class="form-control" asp-for="GifItem.gifLink" />
         </div>
     </div>
     <div class="row m-2">

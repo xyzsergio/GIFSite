@@ -28,7 +28,7 @@ namespace DoneInAGiffy.Pages.GIFs
                     cmd.Parameters.AddWithValue("@title", GifItem.gifTitle);
                     cmd.Parameters.AddWithValue("@description", GifItem.gifDescription);
                     cmd.Parameters.AddWithValue("@uploaddate", GifItem.gifUploadDate);
-                    cmd.Parameters.AddWithValue("@filepath", GifItem.gifFilePath);
+                    cmd.Parameters.AddWithValue("@filepath", GifItem.gifLink);
                     cmd.Parameters.AddWithValue("@gifID", id);
 
                     conn.Open();
@@ -58,7 +58,7 @@ namespace DoneInAGiffy.Pages.GIFs
                     GifItem.gifTitle = reader.GetString(1);
                     GifItem.gifDescription = reader.GetString(2);
                     GifItem.gifUploadDate = reader.GetDateTime(3);
-                    GifItem.gifFilePath = reader.GetString(4);
+                    GifItem.gifLink = reader.GetString(4);
                 }
             }
         }

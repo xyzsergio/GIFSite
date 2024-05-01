@@ -13,8 +13,8 @@ namespace DoneInAGiffy.Pages.Model
         public string gifDescription { get; set;}
         [Display(Name = "Uploaded on")]
         public DateTime gifUploadDate { get; set; }
-        [Display(Name = "File path")]
-        public string gifFilePath { get; set; }
+        [Display(Name = "Link")]
+        public string gifLink { get; set; }
         
     }
 }
