@@ -25,11 +25,11 @@ INSERT INTO Permissions (PermissionName) VALUES
 -- Insert into Users
 INSERT INTO [User] (Username, Email, Password, LastLoginTime, PermissionID)
 VALUES 
-('u1', 'u1@gmail.com', '$2a$13$qipoG7nz/WbxROHrf40ewOEH9vLQSY1snxWMNjpoHzoAuJ8GAxaMu', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Owner')),
-('u2', 'u2@gmail.com', '$2a$13$qipoG7nz/WbxROHrf40ewOEH9vLQSY1snxWMNjpoHzoAuJ8GAxaMu', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Owner')),
-('u3', 'u3@gmail.com', '$2a$13$qipoG7nz/WbxROHrf40ewOEH9vLQSY1snxWMNjpoHzoAuJ8GAxaMu', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Viewer')),
-('u4', 'u4@gmail.com', '$2a$13$qipoG7nz/WbxROHrf40ewOEH9vLQSY1snxWMNjpoHzoAuJ8GAxaMu', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Viewer')),
-('u5', 'u5@gmail.com', '$2a$13$qipoG7nz/WbxROHrf40ewOEH9vLQSY1snxWMNjpoHzoAuJ8GAxaMu', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Viewer'));
+('u1', 'u1@gmail.com', '$2a$13$KzJQcSpfAeUBtlJxzbMr0enOPTbM9bZSqYbXTKlLwkd25BC7lQkmi', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Owner')),
+('u2', 'u2@gmail.com', '$2a$13$KzJQcSpfAeUBtlJxzbMr0enOPTbM9bZSqYbXTKlLwkd25BC7lQkmi', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Owner')),
+('u3', 'u3@gmail.com', '$2a$13$KzJQcSpfAeUBtlJxzbMr0enOPTbM9bZSqYbXTKlLwkd25BC7lQkmi', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Viewer')),
+('u4', 'u4@gmail.com', '$2a$13$KzJQcSpfAeUBtlJxzbMr0enOPTbM9bZSqYbXTKlLwkd25BC7lQkmi', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Viewer')),
+('u5', 'u5@gmail.com', '$2a$13$KzJQcSpfAeUBtlJxzbMr0enOPTbM9bZSqYbXTKlLwkd25BC7lQkmi', GETDATE(), (SELECT PermissionID FROM Permissions WHERE PermissionName = 'Viewer'));
 
 -- Insert into GIFs for each user
 -- User 1 GIFs
