@@ -15,6 +15,9 @@ namespace DoneInAGiffy.Pages.Model
         public DateTime gifUploadDate { get; set; }
         [Display(Name = "Link")]
         public string gifLink { get; set; }
+        [Display(Name = "CategoryID")]
+        public int gifCategoryID { get; set; }
         
+
     }
 }

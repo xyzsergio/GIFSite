@@ -11,12 +11,23 @@
 <form method="post" class="form-group">
     <div class="row m-2">
         <div class="col-2">
-            <label asp-for="newGIF.gifID"></label>
+            <label asp-for="newGIF.gifTitle"></label>
         </div>
         <div class="col-10">
-            <input type="text" class="form-control" asp-for="newGIF.gifID" />
+            <input type="text" class="form-control" asp-for="newGIF.gifTitle" />
         </div>
-        <!-- Other input fields remain the same -->
+    </div>
+
+    <div class="row m-2">
+        <div class="col-2">
+            <label asp-for="newGIF.gifDescription"></label>
+        </div>
+        <div class="col-10">
+            <input type="text" class="form-control" asp-for="newGIF.gifDescription" />
+        </div>
+    </div>
+
+    <div class="row m-2">
         <div class="col-2">
             <label asp-for="newGIF.gifLink"></label>
         </div>
@@ -24,6 +35,16 @@
             <input type="text" class="form-control" asp-for="newGIF.gifLink" />
         </div>
     </div>
+
+    <div class="row m-2">
+        <div class="col-2">
+            <label asp-for="newGIF.gifCategoryID"></label>
+        </div>
+        <div class="col-10">
+            <select asp-for="newGIF.gifCategoryID" asp-items="@Model.Categories"></select>
+        </div>
+    </div>
+
     <div class="row m-2">
         <div class="col-2">
             <button id="btnAdd" class="btn btn-primary">Add GIF</button>
