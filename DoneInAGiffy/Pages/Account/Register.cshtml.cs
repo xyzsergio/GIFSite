@@ -6,6 +6,9 @@ using GIFLibrary;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Data;
 using System.Xml;
+using System.Text.RegularExpressions;
+using System.Reflection.Metadata.Ecma335;
+using Microsoft.AspNetCore.Identity;
 
 namespace DoneInAGiffy.Pages.Account
 {
@@ -13,6 +16,8 @@ namespace DoneInAGiffy.Pages.Account
     {
         [BindProperty]
         public User newUser {  get; set; }
+        
+
         public void OnGet()
         {
         }
@@ -32,6 +37,12 @@ namespace DoneInAGiffy.Pages.Account
                 if (UsernameExists(newUser.Username))
                 {
                     ModelState.AddModelError("newUser.Username", "This username is already taken.");
+                    return Page();
+                }
+                if (!isPasswordValid(newUser.Password))
+                {
+                    ModelState.AddModelError("newUser.Password", "Password must be at least 10 characters long, have a number,\n" +
+                        "have at least one uppercase and one lowercase letter.");
                     return Page();
                 }
 
@@ -62,6 +73,14 @@ namespace DoneInAGiffy.Pages.Account
                 
             }
             
+        }
+        private bool isPasswordValid (string password)
+        {
+            // at least 10 characters, one number, one lowercase and one uppercase
+            string regex = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{10,}$";
+            Regex passwordValidation = new Regex(regex);
+
+            return passwordValidation.IsMatch(password);
         }
 
         private bool EmailDNE(string email)

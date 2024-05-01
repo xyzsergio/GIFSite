@@ -15,6 +15,7 @@
             <button class="btn btn-primary" id="btnView">Display</button>
         </div>
     </div>
+
     @foreach (var gif in Model.GIFs)
     {
         <div class="row m-2 border">
@@ -53,6 +54,7 @@
                 <div class="col-2">
                     <a asp-page="EditGIF" asp-route-itemid="@gif.gifID" class="btn btn-primary">Edit</a>
                 </div>
+
             </div>
         </div>
     }

@@ -3,15 +3,18 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using DoneInAGiffy.Pages.Model;
 using GIFLibrary;
 using Microsoft.Data.SqlClient;
+
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+
 
 namespace DoneInAGiffy.Pages.GIFs
 {
     // Use to connect to claim
     [Authorize]
     [BindProperties]
+    [Authorize(Roles = "1,2")]
     public class AddGIFModel : PageModel
     {
         public List<SelectListItem> Categories { get; set; } = new List<SelectListItem>();
@@ -29,6 +32,7 @@ namespace DoneInAGiffy.Pages.GIFs
                         "VALUES (@title, @description, @uploaddate, @link, @categoryID, @userId)";
                     SqlCommand cmd = new SqlCommand(cmdText, conn);
                     cmd.Parameters.AddWithValue("@title", newGIF.gifTitle);
+
                     cmd.Parameters.AddWithValue("@description", newGIF.gifDescription); 
                     cmd.Parameters.AddWithValue("@uploaddate", DateTime.Now);
                     cmd.Parameters.AddWithValue("@link", newGIF.gifLink);
