@@ -9,7 +9,7 @@ using Microsoft.Data.SqlClient;
 namespace DoneInAGiffy.Pages.GIFs
 {
     [BindProperties]
-    [Authorize(Roles = "Owner, Viewer")]
+    [Authorize(Roles = "1,2")]
     // this page has a lot of stuff missing because our current mockup for the site doesn't have a dropdown to filter GIFs
     public class ViewGIFsModel : PageModel
     {

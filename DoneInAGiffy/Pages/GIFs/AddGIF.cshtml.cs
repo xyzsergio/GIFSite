@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace DoneInAGiffy.Pages.GIFs
 {
     [BindProperties]
-    [Authorize(Roles = "Owner, Viewer")]
+    [Authorize(Roles = "1,2")]
     public class AddGIFModel : PageModel
     {
         public GIF newGIF { get; set; } = new GIF();
