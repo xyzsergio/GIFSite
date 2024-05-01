@@ -32,7 +32,7 @@ namespace DoneInAGiffy.Pages.GIFs
         {
             using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
             {
-                string cmdText = "SELECT Title, Description, UploadDate, Link FROM GIF WHERE CategoryId=@categoryId";
+                string cmdText = "SELECT Title, Description, UploadDate, Link, GIFID FROM GIF WHERE CategoryId=@categoryId";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
                 cmd.Parameters.AddWithValue("@categoryId", categoryId);
                 conn.Open();
@@ -46,6 +46,7 @@ namespace DoneInAGiffy.Pages.GIFs
                         item.gifDescription = reader.GetString(1);
                         item.gifUploadDate = reader.GetDateTime(2);
                         item.gifLink = reader.GetString(3);
+                        item.gifID = reader.GetInt32(4);
                         GIFs.Add(item);
                     }
                 }
