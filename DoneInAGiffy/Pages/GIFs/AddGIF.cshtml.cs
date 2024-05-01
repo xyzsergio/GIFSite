@@ -4,10 +4,12 @@ using DoneInAGiffy.Pages.Model;
 using DoneInAGiffy.Pages.Account.Model;
 using GIFLibrary;
 using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DoneInAGiffy.Pages.GIFs
 {
     [BindProperties]
+    [Authorize(Roles = "Owner, Viewer")]
     public class AddGIFModel : PageModel
     {
         public GIF newGIF { get; set; } = new GIF();
@@ -23,9 +25,9 @@ namespace DoneInAGiffy.Pages.GIFs
                     SqlCommand cmd = new SqlCommand(cmdText, conn);
                     cmd.Parameters.AddWithValue("@title", newGIF.gifTitle);
                     cmd.Parameters.AddWithValue("@description", newGIF.gifDescription);
-                    cmd.Parameters.AddWithValue("@uploaddate", newGIF.gifUploadDate);
                     cmd.Parameters.AddWithValue("@filepath", newGIF.gifLink);
                     cmd.Parameters.AddWithValue("@category", newGIF.Category);
+                    cmd.Parameters.AddWithValue("@uploaddate", DateTime.Now);
 
                     conn.Open();
                     cmd.ExecuteNonQuery();

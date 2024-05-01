@@ -1,5 +1,6 @@
 using DoneInAGiffy.Pages.Model;
 using GIFLibrary;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -8,6 +9,7 @@ using Microsoft.Data.SqlClient;
 namespace DoneInAGiffy.Pages.GIFs
 {
     [BindProperties]
+    [Authorize(Roles = "Owner, Viewer")]
     // this page has a lot of stuff missing because our current mockup for the site doesn't have a dropdown to filter GIFs
     public class ViewGIFsModel : PageModel
     {

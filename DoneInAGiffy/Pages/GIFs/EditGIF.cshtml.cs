@@ -1,5 +1,6 @@
 using DoneInAGiffy.Pages.Model;
 using GIFLibrary;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
@@ -7,6 +8,7 @@ using Microsoft.Data.SqlClient;
 namespace DoneInAGiffy.Pages.GIFs
 {
     [BindProperties]
+    [Authorize(Roles = "Owner, Viewer")]
     public class EditGIFModel : PageModel
     {
         public GIF GifItem { get; set; } = new GIF();
