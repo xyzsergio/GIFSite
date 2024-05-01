@@ -20,7 +20,7 @@ namespace DoneInAGiffy.Pages.Model
         [Display(Name = "Link")]
         public string gifLink { get; set; }
 
-        [Display(Name = "Category")]
-        public string Category { get; set; } 
+        [Display(Name = "CategoryID")]
+        public int gifCategoryID { get; set; }    
     }
 }

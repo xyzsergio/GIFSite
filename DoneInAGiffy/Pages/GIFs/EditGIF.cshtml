@@ -11,29 +11,49 @@
 </div>
 <form method="post" class="form-group">
     <div class="row m-2">
-        <div class="col-2">
+        <div class="col-4">
             <h2>Edit GIF</h2>
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="col-2">
+            <label asp-for="Item.gifTitle"></label>
+        </div>
+        <div class="col-10">
+            <input type="text" class="form-control" asp-for="Item.gifTitle" />
         </div>
     </div>
 
     <div class="row m-2">
         <div class="col-2">
-            <label asp-for="GifItem.gifID"></label>
+            <label asp-for="Item.gifDescription"></label>
         </div>
         <div class="col-10">
-            <input type="text" class="form-control" asp-for="GifItem.gifID" />
-        </div>
-        <!-- Other input fields remain the same -->
-        <div class="col-2">
-            <label asp-for="GifItem.gifLink"></label>
-        </div>
-        <div class="col-10">
-            <input type="text" class="form-control" asp-for="GifItem.gifLink" />
+            <input type="text" class="form-control" asp-for="Item.gifDescription" />
         </div>
     </div>
+
     <div class="row m-2">
         <div class="col-2">
-            <input type="submit" value="Update" class="btn btn-primary" />
+            <label asp-for="Item.gifLink"></label>
+        </div>
+        <div class="col-10">
+            <input type="text" class="form-control" asp-for="Item.gifLink" />
+        </div>
+    </div>
+
+    <div class="row m-2">
+        <div class="col-2">
+            <label asp-for="Item.gifCategoryID"></label>
+        </div>
+        <div class="col-10">
+            <select asp-for="Item.gifCategoryID" asp-items="@Model.Categories"></select>
+        </div>
+    </div>
+
+    <div class="row m-2">
+        <div class="col-2">
+            <input type="submit" value="Update" class="btn btn-primary"/>
         </div>
     </div>
 </form>
