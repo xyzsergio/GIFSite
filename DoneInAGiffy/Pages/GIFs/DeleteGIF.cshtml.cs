@@ -7,7 +7,7 @@ using System.Data.SqlTypes;
 
 namespace DoneInAGiffy.Pages.GIFs
 {
-    [Authorize(Roles = "1")]
+    // [Authorize(Roles = "1")]
     public class DeleteGIFModel : PageModel
     {
         public IActionResult OnGet(int id)
