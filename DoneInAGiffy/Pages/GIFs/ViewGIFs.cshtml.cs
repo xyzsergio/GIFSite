@@ -23,8 +23,29 @@ namespace DoneInAGiffy.Pages.GIFs
         public void OnGet()
         {
             int userId = GetCurrentlyLoggedUserId();
+            CategoryId = GetAngryCategoryId();
             PopulateCategoryDDL();
             PopulateViewGIF(userId, CategoryId);
+        }
+
+        private int GetAngryCategoryId()
+        {
+            int angryCategoryId = 0;
+
+            // Retrieve the ID of the "Angry" category from the database
+            using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
+            {
+                string cmdText = "SELECT CategoryID FROM Category WHERE CategoryName = 'Angry'";
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+                conn.Open();
+                object result = cmd.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    angryCategoryId = Convert.ToInt32(result);
+                }
+            }
+
+            return angryCategoryId;
         }
 
         private int GetCurrentlyLoggedUserId()
