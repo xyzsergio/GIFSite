@@ -12,8 +12,8 @@ namespace DoneInAGiffy.Pages.Account
     [Authorize]
     public class ProfileModel : PageModel
     {
-        [BindProperty]
         public UserProfile profile { get; set; } = new UserProfile();
+
         public void OnGet()
         {
             PopulateProfile();
@@ -25,7 +25,7 @@ namespace DoneInAGiffy.Pages.Account
             string email = HttpContext.User.FindFirstValue(ClaimValueTypes.Email);
             using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
             {
-                string cmdText = "Select Username, Email, LastLoginTime From [User] Where Email=@email";
+                string cmdText = "SELECT Username, Email, LastLoginTime, ProfilePictureLink FROM [User] WHERE Email=@email";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
                 cmd.Parameters.AddWithValue("@email", email);
                 conn.Open();
@@ -37,6 +37,16 @@ namespace DoneInAGiffy.Pages.Account
                     profile.Username = reader.GetString(0);
                     profile.Email = reader.GetString(1);
                     profile.LastLoginTime = reader.GetDateTime(2);
+
+                    // Check if ProfilePictureLink is null
+                    if (!reader.IsDBNull(3))
+                    {
+                        profile.ProfilePictureLink = reader.GetString(3);
+                    }
+                    else
+                    {
+                        profile.ProfilePictureLink = ""; // or assign a default link
+                    }
                 }
             }
         }

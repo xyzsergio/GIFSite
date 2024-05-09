@@ -1,0 +1,29 @@
+﻿@page
+@model DoneInAGiffy.Pages.Account.EditProfileModel
+@{
+    Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
+}
+
+<div class="container mt-3">
+    <h1>Edit Profile</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" value="@Model.profile.Username">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" value="@Model.profile.Email">
+        </div>
+        <div class="mb-3">
+            <label for="profilePictureLink" class="form-label">Profile Picture Link</label>
+            <input type="text" class="form-control" id="profilePictureLink" name="profilePictureLink" value="@Model.profile.ProfilePictureLink">
+        </div>
+        <div class="mb-3">
+            <label for="profileDescription" class="form-label">Profile Description</label>
+            <textarea class="form-control" id="profileDescription" name="profileDescription" rows="3">@Model.profile.ProfileDescription</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/Account/Profile" class="btn btn-secondary">Back</a>
+    </form>
+</div>

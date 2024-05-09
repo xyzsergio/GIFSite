@@ -16,6 +16,11 @@ namespace DoneInAGiffy.Pages.Model
         public string Password { get; set; }
 
         public DateTime LastLoginTime { get; set; }
-        
+
+        [Display(Name = "Profile Picture Link")]
+        public string ProfilePictureLink { get; set; }
+
+        [Display(Name = "Profile Description")]
+        public string ProfileDescription { get; set; }
     }
 }
