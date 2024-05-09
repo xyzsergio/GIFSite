@@ -62,17 +62,13 @@ namespace DoneInAGiffy.Pages.Account
                         // create a principal
                         string username = reader.GetString(2);
                         string roleName = reader.GetString(6);
-                        string profilePicture = reader.GetString(4);
-                        string profileDescription = reader.GetString(5);
                         // 1. create a list of claims
                         Claim emailClaim = new Claim(ClaimTypes.Email, loginUser.Email);
                         Claim nameClaim = new Claim(ClaimTypes.Name, username);
                         Claim roleClaim = new Claim(ClaimTypes.Role, roleName);
                         Claim userIDClaim = new Claim(ClaimTypes.Actor, userID.ToString());
-                        Claim pictureClaim = new Claim(ClaimTypes.Name, profilePicture);
-                        Claim descriptionClaim = new Claim(ClaimTypes.Name, profileDescription);
 
-                        List<Claim> claims = new List<Claim> { emailClaim, nameClaim, roleClaim, userIDClaim, pictureClaim, descriptionClaim };
+                        List<Claim> claims = new List<Claim> { emailClaim, nameClaim, roleClaim, userIDClaim};
                         // 2. add the list of claims to a ClaimsIdentity
                         ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         // 3. add the identity to a ClaimsPrincipal
