@@ -8,20 +8,24 @@
     <h1>Edit Profile</h1>
     <form method="post">
         <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" name="username" value="@Model.profile.Username">
+            <label asp-for="profile.Username" class="form-label">Username</label>
+            <input asp-for="profile.Username" class="form-control" />
+            <span asp-validation-for="profile.Username" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" value="@Model.profile.Email">
+            <label asp-for="profile.Email" class="form-label">Email address</label>
+            <input asp-for="profile.Email" class="form-control" />
+            <span asp-validation-for="profile.Email" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label for="profilePictureLink" class="form-label">Profile Picture Link</label>
-            <input type="text" class="form-control" id="profilePictureLink" name="profilePictureLink" value="@Model.profile.ProfilePictureLink">
+            <label asp-for="profile.ProfilePictureLink" class="form-label">Profile Picture Link</label>
+            <input asp-for="profile.ProfilePictureLink" class="form-control" />
+            <span asp-validation-for="profile.ProfilePictureLink" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label for="profileDescription" class="form-label">Profile Description</label>
-            <textarea class="form-control" id="profileDescription" name="profileDescription" rows="3">@Model.profile.ProfileDescription</textarea>
+            <label asp-for="profile.ProfileDescription" class="form-label">Profile Description</label>
+            <textarea asp-for="profile.ProfileDescription" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="profile.ProfileDescription" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <a href="/Account/Profile" class="btn btn-secondary">Back</a>

@@ -62,6 +62,13 @@ namespace DoneInAGiffy.Pages.Account
             }
             else
             {
+                foreach (var modelStateEntry in ModelState.Values)
+                {
+                    foreach (var error in modelStateEntry.Errors)
+                    {
+                        Console.WriteLine($"Error: {error.ErrorMessage}");
+                    }
+                }
                 return Page();
             }
         }
