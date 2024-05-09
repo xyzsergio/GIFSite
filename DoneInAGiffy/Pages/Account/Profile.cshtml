@@ -3,19 +3,19 @@
 @{
     Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
 }
-<div class="username">
-    <!-- label asp-for="profile.Username"></!-->
 
-</div>
-<div>
-    <button>Edit playlist</button>
-</div>
-<div class="row biography">
-   <p>About me: (user's biography here)</p>
-</div>
-<div class="row">
-    <p>My Gifs: (coming soon)</p>
-</div>
-<div class="row">
-    <p>Liked Gifs: (coming soon)</p>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="data:image/jpeg;base64,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" class="img-fluid" alt="Profile Image">
+            <div class="mt-2">
+                <button class="btn btn-danger"><i class="bi bi-heart"></i> Like</button>
+                <button class="btn btn-warning"><i class="bi bi-star"></i> Favorite</button>
+            </div>
+        </div>
+        <div class="col-md-9 mt-3">
+            <h3 class="mb-3">Biography:</h3>
+            <p>This is a hardcoded biography text.</p>
+        </div>
+    </div>
 </div>
