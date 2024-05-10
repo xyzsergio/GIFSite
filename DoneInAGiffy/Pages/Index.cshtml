@@ -1,19 +1,21 @@
 ﻿@page
-@model IndexModel
+@model DoneInAGiffy.Pages.IndexModel
 @{
     ViewData["Title"] = "Home page";
     Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
 }
 <link rel="stylesheet" href="~/css/site.css" />
 
-<div class="search-bar"></div> <!-- Added closing tag for the div -->
+<div class="search-bar"></div>
 
 <div class="indexBackground">
     <div class="gif-grid">
         @foreach (var GIF in Model.GIFs)
         {
             <div class="gif-item">
-                <img src="@GIF.gifLink" alt="@GIF.gifTitle" />
+                <a href="/Account/ViewProfile?id=@GIF.UserID">
+                    <img src="@GIF.gifLink" alt="@GIF.gifTitle" />
+                </a>
                 <p>@GIF.gifTitle</p>
             </div>
         }

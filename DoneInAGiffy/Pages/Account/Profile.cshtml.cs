@@ -5,18 +5,22 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
+using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace DoneInAGiffy.Pages.Account
 {
     [Authorize]
+    [BindProperties]
     public class ProfileModel : PageModel
     {
         public UserProfile profile { get; set; } = new UserProfile();
+        public int UserID { get; set; } // Add UserID property
 
         public void OnGet()
         {
             PopulateProfile();
+            PopulateUserID(); // Populate UserID property
         }
 
         private void PopulateProfile()
@@ -48,6 +52,20 @@ namespace DoneInAGiffy.Pages.Account
                         profile.ProfilePictureLink = ""; // or assign a default link
                     }
                 }
+            }
+        }
+
+        private void PopulateUserID()
+        {
+            // Retrieve UserID of the currently logged-in user
+            string email = HttpContext.User.FindFirstValue(ClaimValueTypes.Email);
+            using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
+            {
+                string cmdText = "SELECT UserID FROM [User] WHERE Email=@email";
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+                cmd.Parameters.AddWithValue("@email", email);
+                conn.Open();
+                UserID = (int)cmd.ExecuteScalar(); // Retrieve UserID
             }
         }
     }

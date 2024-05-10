@@ -43,7 +43,7 @@ namespace DoneInAGiffy.Pages.Account
 
             SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
             // Fix this line later - we don't have RoleId in user table
-            string cmdText = "SELECT Password, [User].UserID, Username, Email, ProfilePictureLink, ProfileDescription, PermissionName FROM [User] INNER JOIN [Permissions] ON [User].PermissionID = [Permissions].PermissionID WHERE Email=@email";
+            string cmdText = "SELECT Password, [User].UserID, Username, Email, PermissionName FROM [User] INNER JOIN [Permissions] ON [User].PermissionID = [Permissions].PermissionID WHERE Email=@email";
             SqlCommand cmd = new SqlCommand(cmdText, conn);
             cmd.Parameters.AddWithValue("@Email", loginUser.Email);
             conn.Open();
@@ -61,14 +61,16 @@ namespace DoneInAGiffy.Pages.Account
                         UpdateUserLoginTime(userID);
                         // create a principal
                         string username = reader.GetString(2);
-                        string roleName = reader.GetString(6);
+                        string roleName = reader.GetString(4);
+                        string passwordName = reader.GetString(0);
                         // 1. create a list of claims
                         Claim emailClaim = new Claim(ClaimTypes.Email, loginUser.Email);
                         Claim nameClaim = new Claim(ClaimTypes.Name, username);
+                        Claim passClaim = new Claim(ClaimTypes.Hash, passwordName);
                         Claim roleClaim = new Claim(ClaimTypes.Role, roleName);
                         Claim userIDClaim = new Claim(ClaimTypes.Actor, userID.ToString());
 
-                        List<Claim> claims = new List<Claim> { emailClaim, nameClaim, roleClaim, userIDClaim};
+                        List<Claim> claims = new List<Claim> { emailClaim, nameClaim, roleClaim, userIDClaim, passClaim};
                         // 2. add the list of claims to a ClaimsIdentity
                         ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         // 3. add the identity to a ClaimsPrincipal

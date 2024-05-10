@@ -1,20 +1,26 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace DoneInAGiffy.Pages.Model
 {
     public class UserProfile
     {
-        
         public int UserId { get; set; }
-        [Display(Name = "Username : ")]
 
+        [Display(Name = "Username")]
+        [Required(ErrorMessage = "Username is required")]
         public string Username { get; set; }
-        [Display(Name = "Email: ")]
 
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "Invalid email address")]
         public string Email { get; set; }
-        [Display(Name = "Password: ")]
+
+        [Display(Name = "Password")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [Display(Name = "Last Login Time")]
         public DateTime LastLoginTime { get; set; }
 
         [Display(Name = "Profile Picture Link")]
@@ -24,3 +30,4 @@ namespace DoneInAGiffy.Pages.Model
         public string ProfileDescription { get; set; }
     }
 }
+

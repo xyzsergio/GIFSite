@@ -1,9 +1,8 @@
 ﻿@page
-@model DoneInAGiffy.Pages.Account.ProfileModel
+@model DoneInAGiffy.Pages.Account.ViewProfileModel
 @{
     Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
 }
-
 <div class="container mt-3">
     <div class="row">
         <div class="col-md-3">
@@ -11,12 +10,11 @@
             <div class="mt-2">
                 <button class="btn btn-danger"><i class="bi bi-heart"></i> Like</button>
                 <button class="btn btn-warning"><i class="bi bi-star"></i> Favorite</button>
-                <a href="EditProfile?id=@Model.UserID" class="btn btn-primary"><i class="bi bi-pencil"></i> Edit Profile</a>
             </div>
         </div>
         <div class="col-md-9 mt-3">
             <h3 class="mb-3">Biography:</h3>
-            <p>@Model.profile.ProfileDescription</p>
+            <p>@Model.ProfileDescription</p>
         </div>
     </div>
 </div>
