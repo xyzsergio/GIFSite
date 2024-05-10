@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System.Security.Claims;
 using DoneInAGiffy.Pages.Account.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DoneInAGiffy.Pages.GIFs
 {
-    [Authorized]
     [BindProperties]
     public class ViewGIFsModel : PageModel
     {

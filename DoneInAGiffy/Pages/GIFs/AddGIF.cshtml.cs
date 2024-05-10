@@ -11,8 +11,7 @@ using System.Security.Claims;
 
 namespace DoneInAGiffy.Pages.GIFs
 {
-    // Use to connect to claim
-    // [Authorize(Roles = "1")]
+    [Authorize(Roles = "Owner")]
     [BindProperties]
     public class AddGIFModel : PageModel
     {
