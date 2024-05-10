@@ -11,7 +11,7 @@ using System.Security.Claims;
 
 namespace DoneInAGiffy.Pages.GIFs
 {
-    [Authorize(Roles = "Owner")]
+    [Authorize(Roles = "Viewer")]
     [BindProperties]
     public class AddGIFModel : PageModel
     {

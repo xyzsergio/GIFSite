@@ -8,7 +8,7 @@ using Microsoft.Data.SqlClient;
 
 namespace DoneInAGiffy.Pages.GIFs
 {
-    [Authorize(Roles = "Owner")]
+    [Authorize(Roles = "Viewer")]
     [BindProperties]
     public class EditGIFModel : PageModel
     {

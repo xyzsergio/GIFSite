@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DoneInAGiffy.Pages.GIFs
 {
+    [Authorize(Roles = "Viewer")]
     [BindProperties]
     public class ViewGIFsModel : PageModel
     {
